@@ -45,23 +45,78 @@
 
 # Add our dependencies 
 import csv
-from email import header
 import os
-
 # assign a variable to open the file 
 file_to_load = '/Users/alicetamiazzo/Desktop/Election_Analysis/Resources/election_results.csv'
 # Assign a variable to save the file path
 file_to_save = os.path.join("analysis", "election_analysis.txt")
-
+# 1. Initilize the total votes counter 
+total_votes = 0
+# Candidate options and candidate votes
+candidate_options = []
+candidate_votes = {}
+# Track the winning candidate, vote count and percentage
+winning_candidate = ""
+winning_count = 0
+winning_percentage = 0
 # Open the election results and read the file
 with open(file_to_load) as election_data:
-
-    # To do: read and analyse the data here 
-    # Read the file object with the reader function 
     file_reader = csv.reader(election_data)
-    # Read and print the header row
+    # Read the header row
     headers = next(file_reader)
-    print(header)
+    # Print each row in the CSV File
+    for row in file_reader:
+        # Add to the total vote count
+        total_votes += 1
+        # Get the candidate name from each row
+        candidate_name = row[2]
+        # If the candidate does not match any existing candidate add it the
+        # the candidate list
+        if candidate_name not in candidate_options:
+            # Add the candidate name to the candidate list 
+            candidate_options.append(candidate_name)
+            # And begin tracking that candidate's vote count 
+            candidate_votes[candidate_name] = 0
+        # Add a vote to the candidate's count 
+        candidate_votes[candidate_name] += 1
+
+#Determine the percentage of votes for each candidate by looping through he counts:
+# 1. iterate through the candidate list:
+for candidate_name in candidate_votes:
+    #2. Retrieve vote count and percentage
+    votes = candidate_votes[candidate_name]
+    vote_percentage = float(votes) / float(total_votes) * 100
+    # To do: print out each candidate's name, vote count, percentage of
+    # votes to the terminal 
+    print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+
+    # Determine winning vote count and candidate 
+    # 1.Determine if the votes is greater than the winning count 
+    if (votes > winning_count) and (vote_percentage > winning_percentage):
+        # 2. If true then set the winning count = vote and winning percentage = 
+        # vote percentage 
+        winning_count = votes
+        winning_percentage = vote_percentage
+        # And, set the winning_candidate equal to the candidate's name 
+        winning_candidate = candidate_name
+# Print the winning candidate's results to the terminal
+winning_candidate_summary = (
+    f"-------------------------\n"
+    f"Winner: {winning_candidate}\n"
+    f"Winning vote count: {winning_count:,}\n"
+    f"Winning percentage: {winning_percentage:.1f}%\n"
+    f"-------------------------\n")
+
+print(winning_candidate_summary)
+
+      
+            #4. Print the candidate name and percentage of votes
+            #print(f'{candidate_name}: received {vote_percentage}% of the vote.')
+
+
+# 3. Print the total votes
+#print(candidate_votes)
+
 
 
     # # Print each row to csv file 
