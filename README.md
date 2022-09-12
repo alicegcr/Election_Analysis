@@ -38,7 +38,7 @@ The analysis of the election show that:
   - Diana DeGette received **73.8%** of the votes and **272,892** number of votes
   - Raymon Anthony Doane received **3.1%** of the votes and **11,606** number of votes
 - The winner of the election:
-** Diana DeGette received 73.8% of the votes and 272,892 number of votes**
+**Diana DeGette received 73.8% of the votes and 272,892 number of votes**
 
 ## Challenge Summary 
 The script refers to elections, so it can be used to analyze other types of elections, such as presidential elections. 
