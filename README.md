@@ -17,7 +17,7 @@ local congressional election.
 - Data Source: election_results.csv
 - Software: Python 3.9.12, Visual Studio Code 1.70.1
 
-## Summary 
+## Results
 The analysis of the election show that:
 - There were 369,711 votes cast in the election:
 - The counties were:
