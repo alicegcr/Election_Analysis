@@ -51,5 +51,4 @@ which can impact the future of public laws in the country.
 
 ## Terminal results 
 ![terminal_results](terminal_results.png).
-![image](https://user-images.githubusercontent.com/111395352/189555329-f1c842f8-f155-42c1-a937-86b97863e015.png)
 
